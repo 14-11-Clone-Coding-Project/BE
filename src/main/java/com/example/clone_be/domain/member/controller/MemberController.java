@@ -3,7 +3,7 @@ package com.example.clone_be.domain.member.controller;
 import com.example.clone_be.domain.member.dto.LoginRequestDto;
 import com.example.clone_be.domain.member.dto.SignupRequestDto;
 import com.example.clone_be.domain.member.service.MemberService;
-import com.example.clone_be.security.auth.UserDetailsImpl;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -18,6 +18,8 @@ import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
+@Tag(name = "MemberController", description = "유저 관련 API")
+@RequestMapping("/member")
 public class MemberController {
 
     private final MemberService memberService;

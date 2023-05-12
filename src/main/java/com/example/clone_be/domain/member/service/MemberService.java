@@ -67,7 +67,7 @@ public class MemberService {
     }
 
     // 로그아웃
-    public ResponseEntity<Message> logout(Member member, HttpServletRequest request) {
+    public ResponseEntity<Message> logout(HttpServletRequest request) {
 //        Optional<RefreshToken> refreshToken = refreshTokenRepository.findByMemberId(member.getMemberId());
 
         String accessToken = request.getHeader("ACCESS_KEY").substring(7);
