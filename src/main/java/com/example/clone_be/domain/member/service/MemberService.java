@@ -74,7 +74,7 @@ public class MemberService {
 //        if(refreshToken.isPresent()){
         Long tokenTime = jwtUtil.getExpirationTime(accessToken);
         redisUtil.setBlackList(accessToken, "access_token", tokenTime);
-        refreshTokenRepository.deleteByMemberId(member.getMemberId());
+//        refreshTokenRepository.deleteByMemberId(member.getMemberId());
         return new ResponseEntity<>(new Message("로그아웃 성공", null), HttpStatus.OK);
 //        }
 //        return new ResponseEntity(new Message("로그아웃 실패", null), HttpStatus.BAD_REQUEST);

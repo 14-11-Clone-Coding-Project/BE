@@ -6,10 +6,7 @@ import com.example.clone_be.domain.member.service.MemberService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.example.clone_be.util.Message;
 
 import javax.servlet.http.HttpServletRequest;
@@ -45,7 +42,7 @@ public class MemberController {
 
     // 로그아웃
     @PostMapping("/logout")
-    public ResponseEntity<Message> logout(@AuthenticationPrincipal UserDetailsImpl userDetails, HttpServletRequest request) {
-        return memberService.logout(userDetails.getMember(), request);
+    public ResponseEntity<Message> logout(HttpServletRequest request) {
+        return memberService.logout(request);
     }
 }
