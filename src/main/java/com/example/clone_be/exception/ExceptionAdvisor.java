@@ -14,6 +14,6 @@ public class ExceptionAdvisor {
     @ExceptionHandler
     public ResponseEntity<Message> exceptionHandler(Exception exception) {
         Message exceptionMessage = Message.setSuccess(exception.getMessage(), null);
-        return new ResponseEntity(exceptionMessage, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(exceptionMessage, HttpStatus.BAD_REQUEST);
     }
 }
