@@ -55,7 +55,7 @@ public class MemberService {
 
         // 사용자 확인
         Member member = memberRepository.findByMemberId(requestDto.getMemberId())
-                .orElseThrow(() -> new IllegalArgumentException("등록된 사자가 없습니다."));
+                .orElseThrow(() -> new IllegalArgumentException("등록된 사용자가 없습니다."));
 
         // 비밀번호 확인
         if (!passwordEncoder.matches(requestDto.getPassword(), member.getPassword())) {
