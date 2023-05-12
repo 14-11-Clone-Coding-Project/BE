@@ -61,9 +61,9 @@ public class WebSecurityConfig {
 
         // 접근 허용 설정
         http.authorizeRequests()
-                .antMatchers("/wine/user/login").permitAll()
-                .antMatchers("/wine/user/signup").permitAll()
-                .antMatchers("/wine/rank").permitAll()
+                .antMatchers("/login").permitAll()
+                .antMatchers("/signup").permitAll()
+                .antMatchers("/checkId").permitAll()
                 //swagger
                 .antMatchers(PERMIT_URL_ARRAY).permitAll()
                 .anyRequest().authenticated();
