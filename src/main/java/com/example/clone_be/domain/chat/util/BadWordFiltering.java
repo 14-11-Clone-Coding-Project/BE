@@ -1,14 +1,15 @@
 package com.example.clone_be.domain.chat.util;
 
 import com.example.clone_be.domain.chat.dto.ChatDto;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
 @Component
+@Slf4j
 public class BadWordFiltering implements BadWords {
     private final Set<String> set = new HashSet<>(List.of(badWords));
 
@@ -28,6 +29,7 @@ public class BadWordFiltering implements BadWords {
                     .replaceAll(v -> substituteValue.repeat(v.group().length()));
         }
         chatDto.setMessage(text);
+
         return chatDto;
     }
 }

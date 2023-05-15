@@ -12,6 +12,7 @@ import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 
@@ -30,19 +31,20 @@ public class ChatController {
     public void enterChatRoom(ChatDto chatDto, SimpMessageHeaderAccessor headerAccessor) throws Exception {
         Thread.sleep(500); // simulated delay
         ChatDto newchatdto = chatService.enterChatRoom(chatDto, headerAccessor);
-        msgOperation.convertAndSend("/sub/chat/room" + chatDto.getRoomId(), newchatdto);
+        msgOperation.convertAndSend("/sub/chat/room", newchatdto);
     }
 
     @MessageMapping("/chat/send")
-    public void sendChatRoom(ChatDto chatDto, SimpMessageHeaderAccessor headerAccessor) throws Exception {
+    public void sendChatRoom(@RequestBody ChatDto chatDto, SimpMessageHeaderAccessor headerAccessor) throws Exception {
         Thread.sleep(500); // simulated delay
-        msgOperation.convertAndSend("/sub/chat/room" + chatDto.getRoomId(), badWordFiltering.change(chatDto));
+        System.out.println(chatDto.getMessage());
+        msgOperation.convertAndSend("/sub/chat/room", badWordFiltering.change(chatDto));
     }
 
     @EventListener
     public void webSocketDisconnectListener(SessionDisconnectEvent event) {
         StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getMessage());
         ChatDto chatDto = chatService.disconnectChatRoom(headerAccessor);
-        msgOperation.convertAndSend("/sub/chat/room" + chatDto.getRoomId(), chatDto);
+        msgOperation.convertAndSend("/sub/chat/room", chatDto);
     }
 }
