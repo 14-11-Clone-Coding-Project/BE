@@ -29,7 +29,7 @@ public class MemberController {
 
     // 아이디 중복 확인
     @PostMapping("/checkId")
-    public ResponseEntity<Message> checkId(Map<String, String> memberId) {
+    public ResponseEntity<Message> checkId(@RequestBody Map<String, String> memberId) {
         return memberService.checkId(memberId);
     }
 

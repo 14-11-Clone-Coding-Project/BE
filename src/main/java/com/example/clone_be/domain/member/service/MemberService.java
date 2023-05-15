@@ -15,6 +15,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestBody;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
@@ -43,7 +45,8 @@ public class MemberService {
 
     // 중복 체크
     public ResponseEntity<Message> checkId(Map<String, String> memberId) {
-        if (!memberRepository.existsByMemberId(String.valueOf(memberId.get("memberId")))) {
+        System.out.println(memberId);
+        if (memberRepository.existsByMemberId(memberId.get("memberId"))) {
             return new ResponseEntity<>(new Message("사용 중인 아이디입니다.", null), HttpStatus.BAD_REQUEST);
         }
 
