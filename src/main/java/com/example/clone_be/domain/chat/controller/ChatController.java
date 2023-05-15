@@ -2,6 +2,7 @@ package com.example.clone_be.domain.chat.controller;
 
 import com.example.clone_be.domain.chat.dto.ChatDto;
 import com.example.clone_be.domain.chat.service.ChatService;
+import com.example.clone_be.domain.chat.util.BadWordFiltering;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.event.EventListener;
@@ -21,6 +22,7 @@ public class ChatController {
 
     private final ChatService chatService;
     private final SimpMessagingTemplate msgOperation;
+    private final BadWordFiltering badWordFiltering;
 
 
     @MessageMapping("/chat/enter")
@@ -34,7 +36,7 @@ public class ChatController {
     @MessageMapping("/chat/send")
     public void sendChatRoom(ChatDto chatDto, SimpMessageHeaderAccessor headerAccessor) throws Exception {
         Thread.sleep(500); // simulated delay
-        msgOperation.convertAndSend("/sub/chat/room" + chatDto.getRoomId(), chatDto);
+        msgOperation.convertAndSend("/sub/chat/room" + chatDto.getRoomId(), badWordFiltering.change(chatDto));
     }
 
     @EventListener
