@@ -24,14 +24,14 @@ function connect() {
 function enterChatRoom() {
     var roomId = $("#connectRoomId").val();
 
-    stompClient.subscribe('/sub/chat/room' + roomId, function (message){
+    stompClient.subscribe('/sub/chat/room', function (message){
         showGreeting("Sender : " + JSON.parse(message.body).sender + "</br>" +
                     "Message : " + JSON.parse(message.body).message)});
 
     stompClient.send("/pub/chat/enter", {}, JSON.stringify(
         { 'type' : "ENTER",
             'sender' : $("#my-name").val(),
-            'roomId' : roomId,
+            // 'roomId' : roomId,
             'message': "enter"}));
 }
 
@@ -39,7 +39,7 @@ function sendMessage() {
     stompClient.send("/pub/chat/send", {}, JSON.stringify(
         { 'type' : "TALK",
             'sender' : $("#my-name").val(),
-            'roomId' : $("#connectRoomId").val(),
+            // 'roomId' : $("#connectRoomId").val(),
             'message': $("#my-message").val()}));
 }
 

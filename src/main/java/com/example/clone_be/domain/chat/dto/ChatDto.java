@@ -20,7 +20,18 @@ public class ChatDto {
 
     private MessageType type;
     private String sender;
-    private String roomId;
+//    private String roomId;
     private String message;
+
+//    @Override
+//    public String toString() {
+//        return "ChatDto{" +
+//                "type=" + type +
+//                ", sender='" + sender + '\'' +
+////                ", roomId='" + roomId + '\'' +
+////                ", roomName='" + roomName + '\'' +
+//                ", message='" + message + '\'' +
+//                '}';
+//    }
 }
 
