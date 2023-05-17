@@ -15,7 +15,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -66,7 +65,7 @@ public class MemberService {
         }
 
         response.addHeader(JwtUtil.ACCESS_KEY, jwtUtil.createToken(member.getMemberId(), "Access"));
-        return new ResponseEntity<>(new Message("로그인 성공", null), HttpStatus.OK);
+        return new ResponseEntity<>(new Message("로그인 성공", member.getMemberId()), HttpStatus.OK);
     }
 
     // 로그아웃
