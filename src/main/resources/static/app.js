@@ -26,21 +26,24 @@ function enterChatRoom() {
 
     stompClient.subscribe('/sub/chat/room', function (message){
         showGreeting("Sender : " + JSON.parse(message.body).sender + "</br>" +
-                    "Message : " + JSON.parse(message.body).message)});
+                    "Message : " + JSON.parse(message.body).message + "</br>" +
+                    "chatUserList : " + JSON.stringify(JSON.parse(message.body).chatUserList))});
 
     stompClient.send("/pub/chat/enter", {}, JSON.stringify(
-        { 'type' : "ENTER",
+        { // 'type' : "ENTER",
             'sender' : $("#my-name").val(),
             // 'roomId' : roomId,
-            'message': "enter"}));
+            'message': "enter",
+            'chatUserList': []}));
 }
 
 function sendMessage() {
     stompClient.send("/pub/chat/send", {}, JSON.stringify(
-        { 'type' : "TALK",
+        { // 'type' : "TALK",
             'sender' : $("#my-name").val(),
             // 'roomId' : $("#connectRoomId").val(),
             'message': $("#my-message").val()}));
+    $("#my-message").val('');
 }
 
 function leaveChatRoom() {
@@ -53,6 +56,7 @@ function leaveChatRoom() {
 
 function showGreeting(message) {
     $("#greetings").append("<tr><td>" + message + "</td></tr>");
+    console.log(message);
 }
 
 $(function () {
