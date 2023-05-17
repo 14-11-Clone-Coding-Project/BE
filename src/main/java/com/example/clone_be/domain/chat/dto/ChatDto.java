@@ -1,27 +1,23 @@
 package com.example.clone_be.domain.chat.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+
+import java.util.Set;
+
 
 @Getter
 @Setter
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 public class ChatDto {
 
-    //메시지 타입
-    public enum MessageType {
-        ENTER,
-        TALK,
-        LEAVE;
-    }
-
-    private MessageType type;
+    private boolean isSys;
     private String sender;
 //    private String roomId;
     private String message;
+    private Set<String> chatUserList;
+
 
 //    @Override
 //    public String toString() {

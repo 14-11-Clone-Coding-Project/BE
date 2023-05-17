@@ -35,10 +35,11 @@ public class ChatController {
     }
 
     @MessageMapping("/chat/send")
-    public void sendChatRoom(@RequestBody ChatDto chatDto, SimpMessageHeaderAccessor headerAccessor) throws Exception {
+    public void sendChatRoom(@RequestBody ChatDto chatDto) throws Exception {
         Thread.sleep(500); // simulated delay
-        System.out.println(chatDto.getMessage());
-        msgOperation.convertAndSend("/sub/chat/room", badWordFiltering.change(chatDto));
+        ChatDto newchatDto = badWordFiltering.change(chatDto);
+        newchatDto.setChatUserList(chatService.getChatUserList());
+        msgOperation.convertAndSend("/sub/chat/room", newchatDto);
     }
 
     @EventListener
