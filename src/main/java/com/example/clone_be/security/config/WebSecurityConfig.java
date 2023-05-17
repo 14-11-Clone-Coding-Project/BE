@@ -64,7 +64,7 @@ public class WebSecurityConfig {
                 .antMatchers("/member/login").permitAll()
                 .antMatchers("/member/signup").permitAll()
                 .antMatchers("/member/checkId").permitAll()
-                .antMatchers("/**").permitAll()
+                .antMatchers("/ws-edit/**").permitAll()
                 //swagger
                 .antMatchers(PERMIT_URL_ARRAY).permitAll()
                 .anyRequest().authenticated();
