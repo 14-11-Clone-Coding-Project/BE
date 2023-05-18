@@ -4,7 +4,17 @@
 
 > 항해99 14기 11조 클론코딩, <br>
 > 스타크래프트 단체 채팅으로 같이 이야기를 나누는 공간입니다.
+> ![ezgif com-video-to-gif](https://github.com/14-11-Clone-Coding-Project/BE/assets/123082067/a1bb6c0f-71ae-4670-85b1-7eba88db0a9b)
 
+| 이름 | 주특기 |  | 깃허브 | 기술 블로그 |
+| --- | --- | --- | --- | --- |
+| 이동언 | FE | FE 리더(하남자) | https://github.com/Undong00 |  |
+| 강한빛 | FE |  | https://github.com/hanbitk |  |
+| 신동현 | BE | BE 리더 | https://github.com/been1118 | https://eastlight0418.tistory.com/ |
+| 전정훈 | BE | 깍두기 | https://github.com/jeonghunjeon |  |
+| 송우근 | BE | 응애(사탄) | https://github.com/U-Keun | https://cat-alan3.tistory.com/ |
+| 황인용 | BE | 해죠 | https://github.com/InyongHwang | https://2nyongs.tistory.com/ |
+| 프로젝트 |  |  | https://github.com/14-11-Clone-Coding-Project |  |
 # ⚙️ BE - Tech Stack
 <br>
 <div align=center> 
