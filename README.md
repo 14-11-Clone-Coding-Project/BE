@@ -4,6 +4,7 @@
 
 > 항해99 14기 11조 클론코딩, <br>
 > 스타크래프트 단체 채팅으로 같이 이야기를 나누는 공간입니다.
+> ![ezgif com-video-to-gif](https://github.com/14-11-Clone-Coding-Project/BE/assets/123082067/a1bb6c0f-71ae-4670-85b1-7eba88db0a9b)
 
 # ⚙️ BE - Tech Stack
 <br>
