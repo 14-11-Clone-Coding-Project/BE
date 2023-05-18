@@ -91,6 +91,8 @@ public class WebSecurityConfig {
 
         config.addAllowedOrigin("http://localhost:3000");
 
+        config.addAllowedOrigin("http://starcraftchatting.s3-website.ap-northeast-2.amazonaws.com");
+
         config.addExposedHeader(JwtUtil.ACCESS_KEY);
 
         config.addAllowedMethod("*");

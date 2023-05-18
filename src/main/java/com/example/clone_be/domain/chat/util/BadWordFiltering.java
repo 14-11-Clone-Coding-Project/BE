@@ -33,4 +33,19 @@ public class BadWordFiltering implements BadWords {
 
         return chatDto;
     }
+
+    public boolean checkBadId(String input) {
+        StringBuilder singBuilder = new StringBuilder("[");
+        for (String sing : sings) singBuilder.append(Pattern.quote(sing));
+        singBuilder.append("]*");
+        String patternText = singBuilder.toString();
+
+        for (String word : set) {
+            String[] chars = word.split("");
+            if (Pattern.compile(String.join(patternText, chars))
+                    .matcher(input)
+                    .find()) return true;
+        }
+        return false;
+    }
 }
